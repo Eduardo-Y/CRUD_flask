@@ -14,10 +14,12 @@
       <th scope="row">{{ user.id }}</th>
       <td>{{ user.name }}</td>
       <td>{{ user.email }}</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">Editar</button>
-        <button type="button" class="btn btn-outline-danger">Deletar</button>
-      </td>
+      <form action="{{ url_for('user.delete_user', id=user.id)}}" method="post">
+        <td>
+          <button type="submit" class="btn btn-outline-primary">Editar</button>
+          <button type="submit" class="btn btn-outline-danger">Delete</button>
+        </td>
+      </form>
     </tr>
     {% endfor %}
   </tbody>
