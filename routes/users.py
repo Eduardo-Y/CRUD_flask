@@ -9,7 +9,7 @@ def list_users():
 
 @user_route.route('/create-user', methods=['POST'])
 def form_insert_user():
-    name = request.form['name']
+    name = request.form['name'].title()
     email = request.form['email']
     id = len(USERS) + 1
     USERS.append({'id':id, 'name':name, 'email':email})
@@ -43,3 +43,9 @@ def update_user(id):
             u['name'] = request.form['name']
             u['email'] = request.form['email']
     return list_users()
+
+@user_route.route(f'/search-user', methods=['POST'])
+def search():
+    input = request.form['search']
+    users_searched = [u for u in USERS if input.title() in [u['id'], u['name'], u['email']]]
+    return render_template('users.html', users=users_searched)

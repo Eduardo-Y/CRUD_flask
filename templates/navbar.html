@@ -30,10 +30,12 @@
           >
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <form class="d-flex" role="search" action="{{ url_for('user.search') }}" method="post">
         <input
-          class="form-control me-2"
+          name="search"
           type="search"
+          id="search"
+          class="form-control me-2"
           placeholder="Search"
           aria-label="Search"
         />
